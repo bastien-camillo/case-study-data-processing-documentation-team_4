@@ -4,6 +4,6 @@
 ## Team 4
 
 Copied the Day2 Folder into our Working Directory
-''' cp -r ~/course/data/day2 ~/Course/wdir/mapping'''
+''' cp -r ~/course/data/day2 ~/course/wdir/mapping'''
 
 
