@@ -21,3 +21,8 @@ metaDMG config *.sort.bam --names ~/course/data/shared/mapping/taxonomy/names.dm
 vim config.yaml
 metaDMG compute config.yaml 
 metaDMG dashboard config.yaml
+
+for f in *.sort.bam;
+do metaDMG-cpp lca -bam $f -names ~/course/data/shared/mapping/taxonomy/names.dmp -nodes ~/course/data/shared/mapping/taxonomy/nodes.dmp -acc2tax ~/course/data/shared/mapping/taxonomy/
+acc2taxid.map.gz -weighttype 1 -fix_ncbi 0 -out $f.lca;
+done
