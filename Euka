@@ -1,1 +1,2 @@
-Copied files to euka_dir folder 
+# Copied files to euka_dir folder 
+cp -r ~/opt/vgan/share/vgan/euka_dir/ .
