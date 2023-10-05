@@ -1,5 +1,7 @@
 Addition of references to reference database
+
 conda activate day1
+
 Nuclear and mito genomes can be downloaded from any source here we use NCBI.
 
 You will need to download Ovis aries mitochondrion, complete genome and save as a file called NC_001941.1.fa in your working directory.
@@ -24,7 +26,11 @@ done &> ovis_map.log
 before competitive mapping
 
 samtools depth -a PRI-TJPGK-CATN-224-226.fq.gz.vs.fq.gz.ovis.sort.bam
+
 samtools depth -a PRI-TJPGK-CATN-224-226.fq.gz.vs.fq.gz.ovis.sort.bam | cut -f3
+
 samtools depth -a PRI-TJPGK-CATN-224-226.fq.gz.vs.fq.gz.ovis.sort.bam | cut -f3 | datamash mean 1
+
+
 if you forget to set the -a option the depth it will be depth per covered base
 samtools depth -a PRI-TJPGK-CATN-224-226.fq.gz.vs.fq.gz.ovis.sort.bam | cut -f3 | datamash mean 1
