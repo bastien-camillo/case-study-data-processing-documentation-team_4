@@ -116,5 +116,39 @@ filterBAM --chunk-size 25 \
 
   # Damage
 
+There are methods that can estimate damage over thousands of taxa (LCA mode), references (local mode) or provide a global estimate (global mode).
 
+We used the Local mode to have an overview of the potential references that might show damage in the sample. First, we need to create the config file:
+metaDMG config --config-file PRI-TJPGK-CATN-160-162.local.yaml \
+  --metaDMG-cpp /usr/local/bin/metaDMG-cpp \
+  --parallel-samples 1 \
+  --cores-per-sample 5 \
+  --output-dir PRI-TJPGK-CATN-160-162.local \
+  --max-position 35 \
+  --min-similarity-score 0.92 \
+  --damage-mode local \   <--- change this to global or lca to run those
+  PRI-TJPGK-CATN-160-162.filtered.bam
+
+compute
+metaDMG compute PRI-TJPGK-CATN-160-162.local.yaml
+
+convert to csv
+metaDMG convert --add-fit-predictions \
+  --output PRI-TJPGK-CATN-160-162.csv.gz \
+  --results PRI-TJPGK-CATN-160-162.local/results
+
+dashboard
+
+metaDMG dashboard --results PRI-TJPGK-CATN-160-162.local/results/
+
+
+# Functional Profiling
+
+Workflow
+mmseq ----> xfilter ----> anvio
+
+
+  
+
+  
 
