@@ -1,2 +1,9 @@
 # Copied files to euka_dir folder 
 cp -r ~/opt/vgan/share/vgan/euka_dir/ .
+
+Following steps for Euka did not work and moved to pathphynder step
+
+Install stringr in R
+R
+install.packages("stringr")
+q()
