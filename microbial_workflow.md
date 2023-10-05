@@ -1,4 +1,4 @@
-#Setup, extension, deplication and mapping
+# Setup, extension, deplication and mapping
 
 We installed two things:
 
