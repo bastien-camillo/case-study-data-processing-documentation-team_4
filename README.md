@@ -7,18 +7,23 @@ Copied the Day2 Folder into our Working Directory
 ''' cp -r ~/course/data/day2 ~/course/wdir/mapping'''
 
 ls to list files, you can use -l option for more details. The asterisk is a wildcard that denotes "anything" in this folder.
+
 ls ~/course/data/day1/* .
 
 You can work out the size of files in this directory
+
 du -sk ~/course/data/day1/*
 
 piping the output of cat to the word count command with count lines option
+
 zcat file.fastq.gz | wc -l
 
 This calculates reads as each read consists of four lines
+
 zcat file.fastq.gz | awk '{s++}END{print s/4}'
 
 Fastp can be used to trim the adapter files. We also filter out those less than 30 reads.
+
 fastp -i file.fastq.gz -o file.trimmed.fastq -l 30
 
 
