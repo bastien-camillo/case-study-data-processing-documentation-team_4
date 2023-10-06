@@ -3,7 +3,10 @@ conda activate day1
 ```
 
 ```bash
+mkdir -p ~/course/wdir/day1
 mkdir -p ~/course/wdir/day1/data
+
+cd ~/course/wdir/day1
 
 #if data is not empty remove everything in it
 if [[ ! -z "$(ls -A ~/course/wdir/day1/data)" ]]
