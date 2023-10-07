@@ -1,27 +1,41 @@
 First, we activated our environment and installed some R packages using mamba​
 
+```bash
 conda activate day3
 mamba install r-tidyverse r-ggrepel
+```
 
 Then we set up a working folder and copied the data 
 
+```bash
 mkdir popgen
 cd popgen
 cp ~/course/data/day3/popgen/* .
+```
 
 Our dataset consisted of three files
+
+```bash
 modern_polar_mexican.bed
 modern_polar_mexican.bim
 modern_polar_mexican.fam
+```
 
 We used PLINK for SNP genotype data managment and analysis. 
 
+```bash
 plink --bfile modern_polar_mexican --missing --out modern_polar_mexican
+```
 
 To run PCA we did this
+
+```bash
 smartpca -p modern_all.smartpca.par | tee modern_all.smartpca.log
+```
 
 With the output of parameter file:
+
+```bash
 genotypename:    modern_polar_mexican.bed
 snpname:         modern_polar_mexican.bim
 indivname:       modern_polar_mexican.fam
@@ -35,8 +49,11 @@ poplistname:   	 modern_all.pops.txt
 lsqproject:  YES
 pordercheck:  NO
 autoshrink: YES
+```
 
 We then used R to visualize our results
+
+```r
 #!/usr/bin/Rscript --vanilla
 
 #########################################
@@ -138,9 +155,12 @@ walk(seq_len(ncol(pcs)), ~ {
         theme_bw())
 })
 dev.off()
+```
 
 
 Then another R script to run f statistics
+
+```r
 #!/usr/bin/Rscript --vanilla
 
 #################################
@@ -352,3 +372,4 @@ dev.off()
 ## Which population is closest to the ancient Mexican bear population?
 ## Compare this tree to the admixture graph in Fig. 1D in Pedersen et al 2021
 ## How do they differ, and what could be the interpretation?
+```
