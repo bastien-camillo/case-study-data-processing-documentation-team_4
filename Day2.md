@@ -23,7 +23,9 @@ do
     if [[ $file == *.fq.gz ]]
     then
         file_name=$(basename $file .fq.gz)
-        vsearch --fastx_uniques $file --fastqout $file_name.vs.fq --minseqlength 30 --strand both | gzip $file_name.vs.fq | zcat $file_name.vs.fq.gz | awk '{if(NR%4==2) print length($1)}' | sort -n | uniq -c > $file_name.vs.fq.gz.read_length.txt
+        vsearch --fastx_uniques $file --fastqout $file_name.vs.fq --minseqlength 30 --strand both
+        gzip $file_name.vs.fq
+        zcat $file_name.vs.fq.gz | awk '{if(NR%4==2) print length($1)}' | sort -n | uniq -c > $file_name.vs.fq.gz.read_length.txt
     fi
 done
 ```
