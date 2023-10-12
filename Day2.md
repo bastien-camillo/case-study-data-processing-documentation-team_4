@@ -61,10 +61,8 @@ vim config.yaml
 
 ```bash
 metaDMG compute config.yaml 
-
-metaDMG dashboard config.yaml
-
 metaDMG convert --output metaDMGresults.csv --add-fit-predictions
+metaDMG dashboard config.yaml
 ```
 
 
