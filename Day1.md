@@ -34,7 +34,7 @@ do
 
         zcat $file | wc -l
         zcat $file | awk '{s++}END{print s/4}'
-        fastp -i $file -o $file_name.trimmed.fastq -l 30
+        fastp -i $file -o data/$file_name.trimmed.fastq -l 30
     fi
 done
 
