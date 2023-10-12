@@ -60,28 +60,37 @@ done
 
 bwa index ~/course/wdir/day1/data/paeruginosa.fasta.gz
 
-for file in ~/course/wdir/day1/data/*.trimmed.fastq
+for file in ~/course/wdir/day1/data/*
 do
-    file_name=$(basename $file .trimmed.fastq)
-    bwa aln -t 5 ~/course/wdir/day1/data/paeruginosa.fasta.gz $file | bwa samse ~/course/wdir/day1/data/paeruginosa.fasta.gz - $file | samtools view -b - | samtools sort -o ~/course/wdir/day1/data/$file_name.trimmed.sorted.bam
+    if [[ $file == *.trimmed.fastq ]]
+    then
+        file_name=$(basename $file .trimmed.fastq)
+        bwa aln -t 5 ~/course/wdir/day1/data/paeruginosa.fasta.gz $file | bwa samse ~/course/wdir/day1/data/paeruginosa.fasta.gz - $file | samtools view -b - | samtools sort -o ~/course/wdir/day1/data/$file_name.trimmed.sorted.bam
+    fi
 done
 
 # EXECRCIE 6
 
-for file in ~/course/wdir/day1/data/*.trimmed.fastq
+for file in ~/course/wdir/day1/data/*
 do
-    file_name=$(basename $file .trimmed.fastq)
-    samtools flagstat ~/course/wdir/day1/data/$file_name.trimmed.sorted.bam
-    samtools view -b -F4 -q 30 ~/course/wdir/day1/data/$file_name.trimmed.sorted.bam | samtools rmdup -s - ~/course/wdir/day1/data/$file_name.filtered.rmdup.bam
-    samtools view ~/course/wdir/day1/data/$file_name.filtered.rmdup.bam | awk '{print length($10)}' | datamash mean 1
+    if [[ $file == *.trimmed.fastq ]]
+    then
+        file_name=$(basename $file .trimmed.fastq)
+        samtools flagstat ~/course/wdir/day1/data/$file_name.trimmed.sorted.bam
+        samtools view -b -F4 -q 30 ~/course/wdir/day1/data/$file_name.trimmed.sorted.bam | samtools rmdup -s - ~/course/wdir/day1/data/$file_name.filtered.rmdup.bam
+        samtools view ~/course/wdir/day1/data/$file_name.filtered.rmdup.bam | awk '{print length($10)}' | datamash mean 1
+    fi
 done
 
 # EXECRCIE 7
 
-for file in ~/course/wdir/day1/data/*.trimmed.fastq
+for file in ~/course/wdir/day1/data/*
 do
-    file_name=$(basename $file .trimmed.fastq)
-    samtools index ~/course/wdir/day1/data/$file_name.filtered.rmdup.bam
-    mapDamage -i ~/course/wdir/day1/data/$file_name.filtered.rmdup.bam -r ~/course/wdir/day1/data/paeruginosa.fasta.gz --no-stats
+    if [[ $file == *.trimmed.fastq ]]
+    then
+        file_name=$(basename $file .trimmed.fastq)
+        samtools index ~/course/wdir/day1/data/$file_name.filtered.rmdup.bam
+        mapDamage -i ~/course/wdir/day1/data/$file_name.filtered.rmdup.bam -r ~/course/wdir/day1/data/paeruginosa.fasta.gz --no-stats
+    fi
 done
 ```
