@@ -60,7 +60,7 @@ done
 
 ## dereplication ##
 ```bash
-for file in ~/YOUR_DIRECTORY/data/*
+for file in *
 do
     if [[ $file == *.extended.fastq.gz ]]
     then
