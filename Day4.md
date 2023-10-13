@@ -5,7 +5,7 @@ cd YOUR_DIRECTORY
 mkdir -p metaDMG
 cd metaDMG
 
-ln -s ~/YOUR_DIRECTORY data
+ln -s ~/YOUR_DIRECTORY .
 ```
 
 # session 2 | extension, dereplication and mapping #
@@ -19,7 +19,7 @@ pip install tabview
 ```
 
 ```bash
-for file in ~/YOUR_DIRECTORY/data/*
+for file in *
 do
     if [[ $file == *.fastq.gz ]]
     then
@@ -31,7 +31,7 @@ done
 
 ## read extension of all fastq files from YOUR_DIRECTORY ##
 ```bash
-for file in ~/YOUR_DIRECTORY/data/*
+for file in *
 do
     if [[ $file == *.fastq.gz ]]
     then
