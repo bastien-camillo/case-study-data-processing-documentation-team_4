@@ -90,7 +90,7 @@ mkdir -d data/mapping_output
 ```
 
 ```bash
-for file in ~/YOUR_DIRECTORY/data/*
+for file in *
 do
     if [[ $file == *.mapping.fastq.gz ]]
     then
@@ -101,14 +101,14 @@ do
             -x data/db/aegenomics.db \ ## !!! DATA_BASE_PATH !!! ##
             -q $file_name.mapping.fastq.gz --no-unal \
             | samtools view -F 4 -b \
-            | samtools sort -@ 32 -m 8G -o data/mapping_output/$file_name.sorted.bam
+            | samtools sort -@ 32 -m 8G -o $file_name.sorted.bam
     fi
 done
 ```
 
 # session3 | filtering #
 ```bash
-for file in ~/YOUR_DIRECTORY/data/mapping_output/*
+for file in *
 do
     if [[ $file == *.sorted.bam ]]
     then
@@ -139,7 +139,7 @@ conda deactivate
 ```
 ### chui pas convaincu de ce passage ###
 ```bash
-for file in ~/YOUR_DIRECTORY/data/mapping_output/*
+for file in *
 do
     if [[ $file == *.sorted.bam ]]
     then
