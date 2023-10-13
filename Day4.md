@@ -2,10 +2,8 @@
 ```bash
 cd YOUR_DIRECTORY
 
-mkdir -p metaDMG
+ln -s ~/YOUR_DIRECTORY metaDMG
 cd metaDMG
-
-ln -s ~/YOUR_DIRECTORY .
 ```
 
 # session 2 | extension, dereplication and mapping #
